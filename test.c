@@ -36,7 +36,7 @@ float returnAverage(int* array, int size)
     return average;
 }
 
-int returnHighScore(int student_size, int subject_size, int array[student_size][subject_size])
+int returnHighScore(int subject_size, int student_size, int array[subject_size][student_size])
 {
     int high_score = 0;
     int total_score[5] = {0, 0, 0, 0, 0};
@@ -44,7 +44,7 @@ int returnHighScore(int student_size, int subject_size, int array[student_size][
     {
         for(int k = 0; k < subject_size; k++)
         {
-            total_score[i] += array[i][k];
+            total_score[i] += array[k][i];
         }
 
         if(high_score < total_score[i])
@@ -59,22 +59,19 @@ int main(void){
 
     char students [5] = {"ABCDE"};
 
-    int score [5][2] = {
-        {72, 48},
-        {88, 39},
-        {72, 91},
-        {81, 82},
-        {68, 78}
+    int score [2][5] = {
+        {72, 88, 72, 81, 68},
+        {48, 39, 91, 82, 78}
     };
 
-    int math [5] = {score[0][0], score[1][0], score[2][0], score[3][0], score[4][0]};
-    int physics [5] = {score[0][1], score[1][1], score[2][1], score[3][1], score[4][1]};
+    int math [5] = {score[0][0], score[0][1], score[0][2], score[0][3], score[0][4]};
+    int physics [5] = {score[1][0], score[1][1], score[1][2], score[1][3], score[1][4]};
 
     for(int i = 0; i < SIZE_OF_ARRAY(students); i++)
     {
         char student = students[i];
-        int math_score = score[i][0];
-        int physics_score = score[i][1];
+        int math_score = score[0][i];
+        int physics_score = score[1][i];
         printf("%c\n数学 :%d点\n物理 :%d点\n\n", student, math_score, physics_score);
     }
 
